@@ -21,7 +21,7 @@ variable "description" {
 }
 
 variable "mgmt_domain_id" {
-  description = "The Distinguished Name for the Management Domain.\n Example:\n * \"uni/tn-mgmt/mgmtp-default/oob-default\""
+  description = "The Distinguished Name for the Management Domain.\n Example: \"uni/tn-mgmt/mgmtp-default/oob-default\""
   type        = string
   default     = ""
 }
@@ -51,7 +51,6 @@ variable "protocol" {
 variable "remote_host" {
   description = "The host name or IP for export destination."
   type        = string
-  default     = "hostname.example.com"
 }
 
 variable "remote_path" {
@@ -76,24 +75,28 @@ variable "remote_port" {
 variable "ssh_key" {
   description = "(Only for the Use SSH Public/Private Files authentication type) The contents of the SSH public or private key that is used to authenticate the user."
   type        = string
+  sensitive   = true
   default     = ""
 }
 
 variable "ssh_passphrase" {
   description = "(Only for the Use SSH Public/Private Files authentication type) The SSH key passphrase that is used to authenticate the user."
   type        = string
+  sensitive   = true
   default     = ""
 }
 
 variable "username" {
   description = "The username to be used to transfer data to the destination. Only required for usePassword auth_type."
   type        = string
-  default     = "admin"
+  sensitive   = true
+  default     = ""
 }
 
 variable "password" {
   description = "The password to be used to transfer data to the destination. Only required for usePassword auth_type."
   type        = string
+  sensitive   = true
   default     = ""
 }
 

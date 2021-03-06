@@ -45,7 +45,6 @@ variable "name_alias" {
 variable "remote_host_dn" {
   description = "The Distinguished Name of the remote host for the configuration export policy."
   type        = string
-  default     = ""
 }
 
 variable "snapshot" {
@@ -61,7 +60,6 @@ variable "snapshot" {
 variable "scheduler_dn" {
   description = "The Distinguished Name of the scheduler policy used for running scheduled export jobs for the configuration export policy."
   type        = string
-  default     = ""
 }
 
 variable "secure_fields" {

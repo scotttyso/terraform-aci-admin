@@ -64,5 +64,7 @@ No Modules.
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| scheduler | This output will provide the DN of the Triggered Scheduler Policy. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

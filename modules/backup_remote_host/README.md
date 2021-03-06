@@ -52,21 +52,21 @@ No Modules.
 | annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | auth\_type | The authentication type to be used to authenticate the user. The authentication type can be:<br>  * usePassword<br>  * useSshKeyContents | `string` | `"usePassword"` | no |
 | description | A Description for the Remote Host. | `string` | `""` | no |
-| mgmt\_domain\_id | The Distinguished Name for the Management Domain.<br> Example:<br> * "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `""` | no |
+| mgmt\_domain\_id | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `""` | no |
 | name | A Name for The destination for data export.  If this is not defined the remote\_host value will be used for the name. | `string` | `""` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | password | The password to be used to transfer data to the destination. Only required for usePassword auth\_type. | `string` | `""` | no |
 | protocol | The transfer protocol to be used for data export. The protocols can be: ftp, scp or sftp. | `string` | `"sftp"` | no |
-| remote\_host | The host name or IP for export destination. | `string` | `"hostname.example.com"` | no |
+| remote\_host | The host name or IP for export destination. | `string` | n/a | yes |
 | remote\_path | The path where data will reside in the destination; in example /tmp. | `string` | `"/tmp"` | no |
 | remote\_port | The port for the data export destination. | `number` | `22` | no |
 | ssh\_key | (Only for the Use SSH Public/Private Files authentication type) The contents of the SSH public or private key that is used to authenticate the user. | `string` | `""` | no |
 | ssh\_passphrase | (Only for the Use SSH Public/Private Files authentication type) The SSH key passphrase that is used to authenticate the user. | `string` | `""` | no |
-| username | The username to be used to transfer data to the destination. Only required for usePassword auth\_type. | `string` | `"admin"` | no |
+| username | The username to be used to transfer data to the destination. Only required for usePassword auth\_type. | `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| leaf\_policy\_group | This output will provide the Leaf Policy Group ID. |
+| remote\_host | This output will provide the DN of the Remote Host Policy. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
