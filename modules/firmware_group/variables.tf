@@ -1,56 +1,38 @@
-terraform {
-  experiments = [module_variable_optional_attrs]
+variable "annotation" {
+  description = "Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
+  type        = string
+  default     = ""
 }
 
-variable "vpc_domains" {
-  description = "Create Explicit VPC Protection Group(s)"
-  type = map(object({
-    annotation_domain        = optional(string)
-    annotation_domain_policy = optional(string)
-    annotation_node1         = optional(string)
-    annotation_node2         = optional(string)
-    domain_policy            = optional(string)
-    name                     = optional(string)
-    name_alias_node1         = optional(string)
-    name_alias_node2         = optional(string)
-    node1_id                 = optional(number)
-    node2_id                 = optional(number)
-    pod_id                   = optional(number)
-    vpc_domain_id            = optional(number)
-  }))
-  default = {
-    default = {
-      annotation_domain        = ""
-      annotation_domain_policy = ""
-      annotation_node1         = ""
-      annotation_node2         = ""
-      domain_policy            = "default"
-      name                     = "leaf101-102-vpc"
-      name_alias_node1         = ""
-      name_alias_node2         = ""
-      node1_id                 = 201
-      node2_id                 = 202
-      pod_id                   = 1
-      vpc_domain_id            = 201
-    }
+variable "description" {
+  description = "The Description for the Node Firmware Group."
+  type        = string
+  default     = ""
+}
+
+variable "firmware_group_type" {
+  description = "Specify if this Firmware Group should be for a range of switches or All Switches.  Options are ALL or range."
+  type        = string
+  default     = "range"
+  validation {
+    condition     = (var.firmware_group_type == "ALL" || var.firmware_group_type == "range")
+    error_message = "The firmware_group_type options are ALL or range."
   }
 }
 
-locals {
-  vpc_domains = {
-    for k, v in var.vpc_domains : k => {
-      annotation_domain        = (v.annotation_domain != null ? v.annotation_domain : "")
-      annotation_domain_policy = (v.annotation_domain_policy != null ? v.annotation_domain_policy : "")
-      annotation_node1         = (v.annotation_node1 != null ? v.annotation_node1 : "")
-      annotation_node2         = (v.annotation_node2 != null ? v.annotation_node2 : "")
-      domain_policy            = coalesce(v.domain_policy, "default")
-      name                     = coalesce(v.name, "leaf101-102-vpc")
-      name_alias_node1         = (v.name_alias_node1 != null ? v.name_alias_node1 : "")
-      name_alias_node2         = (v.name_alias_node2 != null ? v.name_alias_node2 : "")
-      node1_id                 = coalesce(v.node1_id, 201)
-      node2_id                 = coalesce(v.node2_id, 202)
-      pod_id                   = coalesce(v.pod_id, 1)
-      vpc_domain_id            = coalesce(v.vpc_domain_id, 201)
-    }
-  }
+variable "firmware_policy_dn" {
+  description = "The Distinguished Name for the Firmware Policy."
+  type        = string
+}
+
+variable "name" {
+  description = "Name for the Firmware Group."
+  type        = string
+  default     = "default"
+}
+
+variable "name_alias" {
+  description = "A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
+  type        = string
+  default     = ""
 }

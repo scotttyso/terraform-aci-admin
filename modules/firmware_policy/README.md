@@ -43,22 +43,24 @@ No Modules.
 
 | Name |
 |------|
-| [aci_firmware_group](https://registry.terraform.io/providers/ciscodevnet/aci/0.5.2/docs/resources/firmware_group) |
+| [aci_firmware_policy](https://registry.terraform.io/providers/ciscodevnet/aci/0.5.2/docs/resources/firmware_policy) |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
-| description | The Description for the Node Firmware Group. | `string` | `""` | no |
-| firmware\_group\_type | Specify if this Firmware Group should be for a range of switches or All Switches.  Options are ALL or range. | `string` | `"range"` | no |
-| firmware\_policy\_dn | The Distinguished Name for the Firmware Policy. | `string` | n/a | yes |
-| name | Name for the Firmware Group. | `string` | `"default"` | no |
+| description | A description for the Firmware Policy. | `string` | `""` | no |
+| effective\_on\_reboot | A property that indicates if the selected firmware version will be active after reboot. The firmware must be effective on an unplanned reboot before the scheduled maintenance operation.  Options are yes or no.  Default is no. | `string` | `"no"` | no |
+| ignore\_compatability | A property for specifying whether compatibility checks should be ignored when applying the firmware policy.  Options are yes or no.  Default is no. | `string` | `"no"` | no |
+| name | The firmware policy name. | `string` | `"default"` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| sw\_version | The firmware version. | `string` | `"n9000-14.2(5k)"` | no |
+| version\_check\_override | A property for specifying whether the firmware upgrade should be triggered or not.  Options are trigger, trigger-immediate or untriggered.  Default is untriggered. | `string` | `"untriggered"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| firmware\_group | This output will provide the Distinguished Name of the Firmware Group. |
+| firmware\_policy | This output will provide the Distinguished Name of the Firmware Policy. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

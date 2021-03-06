@@ -68,5 +68,5 @@ No Modules.
 
 | Name | Description |
 |------|-------------|
-| remote\_host | This output will provide the DN of the Remote Host Policy. |
+| remote\_host | This output will provide the Distinguished Name of the Remote Host Policy. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
