@@ -1,4 +1,4 @@
-# backup_policy - Configuration Backup to Remote Host Terraform Module - aci_rest
+# backup_policy - Create a Configuration Export Policy Terraform Module - aci_rest
 
 ## Usage
 

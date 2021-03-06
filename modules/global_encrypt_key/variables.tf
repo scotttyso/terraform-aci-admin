@@ -28,6 +28,6 @@ variable "strong_encrypt" {
   default     = true
   validation {
     condition     = (var.strong_encrypt == true || var.strong_encrypt == false)
-    error_message = "The Strong Encryption State should be true or false."
+    error_message = "The strong_encrypt options are true or false."
   }
 }

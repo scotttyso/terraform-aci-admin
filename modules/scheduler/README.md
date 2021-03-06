@@ -1,4 +1,4 @@
-# scheduler - Configuration Backup scheduler Terraform Module - aci_rest
+# scheduler - Configuration Trigger Scheduler Terraform Module - aci_rest
 
 ## Usage
 

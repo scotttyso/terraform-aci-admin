@@ -1,5 +1,5 @@
 #--------------------------------------------------------
-# Configure Remote Host for Configuration Export
+# Configure a Remote Host for Configuration Export
 #--------------------------------------------------------
 
 /*
