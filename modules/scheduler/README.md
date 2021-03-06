@@ -54,13 +54,13 @@ No Modules.
 | days | The day of the week that the recurring window begins. Options are:<br> * every-day<br> * Monday<br> * Tuesday<br> * Wednesday<br> * Thursday<br> * Friday<br> * Saturday<br> * Sunday<br> * odd-day<br> * even-day | `string` | `"every-day"` | no |
 | description | A Description for the Remote Host. | `string` | `""` | no |
 | hour | The hour that the recurring window begins. Specify the hour as 0 to 24. | `number` | `0` | no |
-| max\_concurrent\_nodes | The concurrency capacity limit. This is the maximum number of tasks that can be processed concurrently.  Default is 0.  Value options are between 0 and 65535 | `number` | n/a | yes |
+| max\_concurrent\_nodes | The concurrency capacity limit. This is the maximum number of tasks that can be processed concurrently.  Default is 0.  Value options are between 0 and 65535 | `number` | `0` | no |
 | max\_running\_time | The processing time capacity limit. This is the maximum duration of the window. The range is 0 to (2^64 - 1) milliseconds. The default value of 0 indicates unlimited, meaning there is no time limit enforced on the scheduler window. | `number` | `0` | no |
 | minute | The minute that the recurring window begins. Specify the minute as 0 to 59. | `number` | `0` | no |
 | name\_alias\_scheduler | Alias for the Scheduler.  A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | name\_alias\_window | Alias for the Window.  A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
-| name\_scheduler | The name for the scheduler policy. | `string` | `"default"` | no |
-| name\_window | The name of the recurring schedule window. A schedule window that triggers a task every 24 hours.  If not defined the name of the scheduler will be used for the window as well.  This is optional. | `string` | `"default"` | no |
+| name\_scheduler | The name for the scheduler policy. | `string` | `"Every24Hours"` | no |
+| name\_window | The name of the recurring schedule window. A schedule window that triggers a task every 24 hours.  If not defined the name of the scheduler will be used for the window as well.  This is optional. | `string` | `""` | no |
 
 ## Outputs
 

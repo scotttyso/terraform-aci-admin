@@ -53,7 +53,7 @@ No Modules.
 | annotation | Annotation for the Window.  Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | description | A description of the configuration export policy. It can be helpful to include information such as when the policy was created, who created the policy, and how they may be contacted. | `string` | `""` | no |
 | format | The data format to be used when exporting the configuration export policy. The format can be:<br>  * json<br>  * xml<br>The default is json. | `string` | `"json"` | no |
-| name | The name of the configuration export policy. For ease of reference, include details such as: the format of the export, how often the policy will run, and where the configuration will be exported. The name cannot be changed after the policy has been created. | `string` | `"default"` | no |
+| name | The name of the configuration export policy. For ease of reference, include details such as: the format of the export, how often the policy will run, and where the configuration will be exported. The name cannot be changed after the policy has been created. | `string` | `"Daily_Backup"` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | remote\_host\_dn | The Distinguished Name of the remote host for the configuration export policy. | `string` | n/a | yes |
 | scheduler\_dn | The Distinguished Name of the scheduler policy used for running scheduled export jobs for the configuration export policy. | `string` | n/a | yes |

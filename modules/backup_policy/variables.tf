@@ -33,7 +33,7 @@ variable "format" {
 variable "name" {
   description = "The name of the configuration export policy. For ease of reference, include details such as: the format of the export, how often the policy will run, and where the configuration will be exported. The name cannot be changed after the policy has been created."
   type        = string
-  default     = "default"
+  default     = "Daily_Backup"
 }
 
 variable "name_alias" {

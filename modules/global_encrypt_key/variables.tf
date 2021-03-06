@@ -14,7 +14,6 @@ variable "encryption_key" {
   description = "The APIC uses a passphrase to generate the AES-256 keys. The passphrase cannot be recovered or read by an ACI administrator or any other user. The AES passphrase is not stored. The APIC uses the AES passphrase to generate the AES key, then discards the passphrase. The same AES-256 passphrase always generates the same AES-256 keys."
   type        = string
   sensitive   = true
-  default     = ""
 }
 
 variable "name_alias" {

@@ -55,6 +55,7 @@ variable "minute" {
 variable "max_concurrent_nodes" {
   description = "The concurrency capacity limit. This is the maximum number of tasks that can be processed concurrently.  Default is 0.  Value options are between 0 and 65535"
   type        = number
+  default     = 0
   validation {
     condition = (
       var.max_concurrent_nodes >= 0 &&
@@ -80,13 +81,13 @@ variable "max_running_time" {
 variable "name_scheduler" {
   description = "The name for the scheduler policy."
   type        = string
-  default     = "default"
+  default     = "Every24Hours"
 }
 
 variable "name_window" {
   description = "The name of the recurring schedule window. A schedule window that triggers a task every 24 hours.  If not defined the name of the scheduler will be used for the window as well.  This is optional."
   type        = string
-  default     = "default"
+  default     = ""
 }
 
 variable "name_alias_scheduler" {
