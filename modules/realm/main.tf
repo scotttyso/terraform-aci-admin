@@ -3,6 +3,7 @@
 #----------------------------------------------
 
 resource "aci_rest" "realm" {
+  for_each   = local.realm
   path       = "/api/node/mo/uni/userext/authrealm.json"
   class_name = "aaaAuthRealm"
   payload    = <<EOF
@@ -15,10 +16,9 @@ resource "aci_rest" "realm" {
       {
         "${child_class}": {
           "attributes": {
-            "dn": "uni/userext/authrealm/${Auth_Realm}auth",
-{%- if Login_Domain %}
-            "providerGroup": "${Login_Domain}",{% endif %}
-            "realm": "${Domain_Type}"
+            "dn": "uni/userext/authrealm/${auth_realm}auth",
+            "providerGroup": "${login_domain}",
+            "realm": "${domain_type}"
           },
           "children": []
         }

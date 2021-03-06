@@ -1,5 +1,5 @@
 module "fabric_best_practices" {
-  source  = "../modules/best_practices"
+  source = "../modules/best_practices"
 }
 
 module "fabric_bgp" {
@@ -17,7 +17,7 @@ module "fabric_bgp" {
 }
 
 module "fabric_dns" {
-  source  = "../modules/dns"
+  source = "../modules/dns"
   # The default "oob" mgmt Domain is being used here so there is no need for: 
   # dns_mgmt  = "oob"
   dns_domain = {
@@ -37,13 +37,13 @@ module "fabric_dns" {
     },
     "dns_server2" = {
       # The default setting for preferred is "false", I can accept that without adding it here
-      server    = "198.18.1.2"
+      server = "198.18.1.2"
     }
   }
 }
 
 module "fabric_ntp" {
-  source  = "../modules/ntp"
+  source = "../modules/ntp"
   # The default "oob" mgmt Domain is being used here so there is no need for: 
   # dns_mgmt  = "oob"
   ntp = {
@@ -61,7 +61,7 @@ module "fabric_ntp" {
 }
 
 module "fabric_pod_policy" {
-  source  = "../modules/pod_policy"
+  source = "../modules/pod_policy"
 }
 
 module "fabric_smart_callhome" {
@@ -82,34 +82,34 @@ module "fabric_smart_callhome" {
 }
 
 module "fabric_snmp_client_grp" {
-  source  = "../modules/snmp_client_grp"
+  source = "../modules/snmp_client_grp"
 }
 
 module "fabric_snmp_client1" {
-  source  = "../modules/snmp_clients"
+  source = "../modules/snmp_clients"
 }
 
 module "fabric_snmp_client2" {
-  source  = "../modules/snmp_clients"
+  source = "../modules/snmp_clients"
   # Using the default client_group
   name   = "server2"
   client = "198.18.1.2"
 }
 
 module "fabric_snmp_community1" {
-  source  = "../modules/snmp_community"
+  source = "../modules/snmp_community"
   # insert required variables here
   community = var.community1
 }
 
 module "fabric_snmp_community2" {
-  source  = "../modules/snmp_community"
+  source = "../modules/snmp_community"
   # insert required variables here
   community = var.community2
 }
 
 module "fabric_snmp_dest_grp" {
-  source  = "../modules/snmp_dest_grp"
+  source = "../modules/snmp_dest_grp"
 }
 
 module "fabric_snmp_trap_source" {
@@ -118,13 +118,13 @@ module "fabric_snmp_trap_source" {
 }
 
 module "fabric_snmp_trap_server1" {
-  source  = "../modules/snmp_trap_server"
+  source = "../modules/snmp_trap_server"
   # insert required variables here
   snmp_string = var.community1
 }
 
 module "fabric_snmp_trap_server2" {
-  source  = "../modules/snmp_trap_server"
+  source = "../modules/snmp_trap_server"
   # insert required variables here
   snmp_server  = "198.18.1.2"
   snmp_string  = var.snmp_user2
@@ -132,14 +132,14 @@ module "fabric_snmp_trap_server2" {
 }
 
 module "fabric_snmp_user1" {
-  source  = "../modules/snmp_user"
+  source = "../modules/snmp_user"
   # insert required variables here
   auth_key  = var.auth_key1
   snmp_user = var.snmp_user1
 }
 
 module "fabric_snmp_user2" {
-  source  = "../modules/snmp_user"
+  source = "../modules/snmp_user"
   # insert required variables here
   auth_key  = var.auth_key2
   auth_type = "hmac-sha1-96"
@@ -149,19 +149,19 @@ module "fabric_snmp_user2" {
 }
 
 module "fabric_syslog_dest_grp" {
-  source  = "../modules/syslog_dest_grp"
+  source = "../modules/syslog_dest_grp"
 }
 
 module "fabric_syslog_source" {
-  source  = "../modules/syslog_source"
+  source = "../modules/syslog_source"
 }
 
 module "fabric_syslog_server1" {
-  source  = "../modules/syslog_server"
+  source = "../modules/syslog_server"
 }
 
 module "fabric_syslog_server2" {
-  source  = "../modules/syslog_server"
+  source = "../modules/syslog_server"
   # Accepting the Same defaults as server1 except the IP of the destination
   syslog_server = "198.18.1.2"
 }

@@ -11,14 +11,8 @@ GUI Location:
 */
 # strength (true|false)
 # realm (ldap|local|radius|rsa|saml|tacacs)
-# realmsubtype (default|duo)
-# auto 	1ull 	Uses push or phone notification 	NO COMMENTS
-# push 	2ull 	Push notification on DuoMobile app 	NO COMMENTS
-# phone 	4ull 	Call the user phone 	NO COMMENTS
-# passcode 	8ull 	Use a passcode generated on DuoMobile app 	NO COMMENTS
-# DEFAULT 	auto(1ull) 	Uses push or phone notification 	NO COMMENTS
-resource "aci_rest" "login_domain" {
-  for_each   = local.login_domain
+resource "aci_rest" "login_domain_radius" {
+  for_each   = local.login_domain_radius
   path       = "/api/node/mo/uni/userext.json"
   class_name = "aaaUserEp"
   payload    = <<EOF
@@ -45,8 +39,7 @@ resource "aci_rest" "login_domain" {
                   "descr": "${each.value["description"]}",
                   "dn": "uni/userext/logindomain-${each.value["login_domain"]}/domainauth",
                   "providerGroup": "${each.value["provider_group"]}",
-                  "realm": "${each.value["realm"]}",
-                  "realmSubType": "${each.value["sub_type"]}",
+                  "realm": "radius"
                 },
                 "children": []
               }
@@ -63,21 +56,9 @@ resource "aci_rest" "login_domain" {
             {
               "aaaRadiusProviderGroup": {
                 "attributes": {
-                  "dn": "uni/userext/radiusext/radiusprovidergroup-${Login_Domain}"
+                  "dn": "uni/userext/radiusext/radiusprovidergroup-${each.value["provider_group"]}"
                 },
-                "children": [
-                  {
-                    "aaaProviderRef": {
-                      "attributes": {
-                        "dn": "uni/userext/radiusext/radiusprovidergroup-${Login_Domain}/providerref-${RADIUS_Server}",
-                        "order": "${Domain_Order}",
-                        "name": "${RADIUS_Server}",
-                        "descr": "Added RADIUS Server ${RADIUS_Server} - Terraform Startup Wizard"
-                      },
-                      "children": []
-                    }
-                  }
-                ]
+                "children": []
               }
             }
           ]
