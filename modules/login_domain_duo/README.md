@@ -52,7 +52,7 @@ No Modules.
 | annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | auth\_type | The authentication type to be used to authenticate the user. The authentication type can be:<br>  * usePassword<br>  * useSshKeyContents | `string` | `"usePassword"` | no |
 | description | A Description for the Remote Host. | `string` | `""` | no |
-| mgmt\_domain\_id | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `"uni/tn-mgmt/mgmtp-default/oob-default"` | no |
+| mgmt\_domain\_id | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `""` | no |
 | name | A Name for The destination for data export.  If this is not defined the remote\_host value will be used for the name. | `string` | `""` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | password | The password to be used to transfer data to the destination. Only required for usePassword auth\_type. | `string` | `""` | no |
@@ -66,7 +66,5 @@ No Modules.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| remote\_host | This output will provide the DN of the Remote Host Policy. |
+No output.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

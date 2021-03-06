@@ -1,25 +1,27 @@
-# tacacs_source - TACACS Source Terraform Module - aci_rest
+# tacacs_accounting - TACACS+ Accounting Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "tacacs_source" {
+module "tacacs_provider" {
 
-  source = "terraform-aci-access//modules/tacacs_source"
+  source = "terraform-aci-access//modules/tacacs_provider"
 
   # omitted...
 }
 ```
 
-This module will Create a TACACS Source Group to Associate a TACACS+ Accounting Group to.
+This module will Create a TACACS+ Accounting Group.
 
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.
 
-* Class: "tacacsSrc"
-* Distinguished Name: "uni/fabric/moncommon/tacacssrc-{TACACS Source}"
-* GUI Location: Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:TACACS > Create TACACS Source
+**TACACS+ Accounting Group:**
+
+* Class: "tacacsGroup"
+* Distinguished Name: "uni/fabric/tacacsgroup-{TACACS+ Accounting Group}"
+* GUI Location: Admin > External Data Collectors > Monitoring Destinations > TACACS > [TACACS Accounting Dest Group] > [TACACS Destinations]
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -49,13 +51,14 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| accounting\_group\_dn | The Distinguished Name for the TACACS+ Accounting Group. | `string` | n/a | yes |
 | annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
-| description | The Description for the TACACS+ Source Group. | `string` | `""` | no |
-| name | Name for the TACACS+ Source Group. | `string` | `"default"` | no |
+| description | The Description for the TACACS+ Accounting Group. | `string` | `""` | no |
+| name | Name for the TACACS+ Accounting Group. | `string` | `"default"` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| accounting\_group | This output will provide the DN of the TACACS+ Accounting Group. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

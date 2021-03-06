@@ -5,32 +5,32 @@
 /*
 API Information:
  - Class: "aaaRadiusProvider"
- - Distinguished Name: "uni/userext/radiusext/radiusprovider-${RADIUS_Server}"
+ - Distinguished Name: "uni/userext/radiusext/radiusprovider-${var.RADIUS_Server}"
 GUI Location:
  - Admin > AAA > Authentication:RADIUS > Create RADIUS Provider
 */
 resource "aci_rest" "radius_provider" {
-  path       = "/api/node/mo/uni/userext/radiusext/radiusprovider-${RADIUS_Server}.json"
+  path       = "/api/node/mo/uni/userext/radiusext/radiusprovider-${var.RADIUS_Server}.json"
   class_name = "aaaRadiusProvider"
   payload    = <<EOF
 {
   "aaaRadiusProvider": {
     "attributes": {
-      "dn": "uni/userext/radiusext/radiusprovider-${RADIUS_Server}",
-      "timeout": "${Timeout}",
-      "retries": "${Retry_Interval}",
+      "dn": "uni/userext/radiusext/radiusprovider-${var.RADIUS_Server}",
+      "timeout": "${var.Timeout}",
+      "retries": "${var.Retry_Interval}",
       "monitorServer": "disabled",
-      "key": "${Shared_Secret}",
-      "authProtocol": "${Authz_Proto}",
-      "name": "${RADIUS_Server}",
-      "descr": "RADIUS Provider - ${RADIUS_Server}.  Added by Terraform Startup Wizard.",
-      "rn": "radiusprovider-${RADIUS_Server}"
+      "key": "${var.Shared_Secret}",
+      "authProtocol": "${var.Authz_Proto}",
+      "name": "${var.RADIUS_Server}",
+      "descr": "RADIUS Provider - ${var.RADIUS_Server}.  Added by Terraform Startup Wizard.",
+      "rn": "radiusprovider-${var.RADIUS_Server}"
     },
     "children": [
       {
         "aaaRsSecProvToEpg": {
           "attributes": {
-            "tDn": "uni/tn-mgmt/mgmtp-default/${Mgmt_Domain}"
+            "tDn": "uni/tn-mgmt/mgmtp-default/${var.Mgmt_Domain}"
           },
           "children": []
         }

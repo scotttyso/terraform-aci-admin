@@ -1,8 +1,3 @@
-variable "accounting_group_dn" {
-  description = "The Distinguished Name for the TACACS+ Accounting Group."
-  type        = string
-}
-
 variable "annotation" {
   description = "Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
   type        = string
@@ -10,13 +5,13 @@ variable "annotation" {
 }
 
 variable "description" {
-  description = "The Description for the TACACS+ Source Group."
+  description = "The Description for the TACACS+ Accounting Group."
   type        = string
   default     = ""
 }
 
 variable "name" {
-  description = "Name for the TACACS+ Source Group."
+  description = "Name for the TACACS+ Accounting Group."
   type        = string
   default     = "default"
 }

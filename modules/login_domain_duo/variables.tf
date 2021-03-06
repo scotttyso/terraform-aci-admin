@@ -23,7 +23,7 @@ variable "description" {
 variable "mgmt_domain_id" {
   description = "The Distinguished Name for the Management Domain.\n Example: \"uni/tn-mgmt/mgmtp-default/oob-default\""
   type        = string
-  default     = "uni/tn-mgmt/mgmtp-default/oob-default"
+  default     = ""
 }
 
 variable "name" {

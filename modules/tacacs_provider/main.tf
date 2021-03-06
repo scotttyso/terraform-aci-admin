@@ -5,42 +5,28 @@
 /*
 API Information:
  - Class: "tacacsGroup"
- - Distinguished Name: "uni/fabric/tacacsgroup-TACACS_acct"
+ - Distinguished Name: "uni/fabric/tacacsgroup-{TACACS+ Accounting Group}"
 GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > TACACS > [TACACS Accounting Dest Group] > [TACACS Destinations]
 */
-resource "aci_rest" "tacacs_accounting" {
-  for_each   = local.tacacs_provider
-  path       = "/api/node/mo/uni/fabric/tacacsgroup-${each.value["accounting_group"]}.json"
-  class_name = "tacacsGroup"
+resource "aci_rest" "accounting_group_dest" {
+  path       = "/api/node/mo/${var.accounting_group_dn}/tacacsdest-${var.hostname}-port-${var.port}.json"
+  class_name = "tacacsTacacsDest"
   payload    = <<EOF
 {
-  "tacacsGroup": {
+  "tacacsTacacsDest": {
     "attributes": {
-      "annotation": "${each.value["annotation_accounting"]}",
-      "dn": "uni/fabric/tacacsgroup-${each.value["accounting_group"]}",
-      "descr": "${each.value["descr_accounting"]}",
-      "name": "${each.value["accounting_group"]}",
-      "nameAlias": "${each.value["name_alias_accounting"]}",
+      "authProtocol": "${var.auth_protocol}",
+      "dn": "${var.accounting_group_dn}/tacacsdest-${var.hostname}-port-${var.port}",
+      "host": "${var.hostname}",
+      "key": "${var.key}",
     },
     "children": [
       {
-        "tacacsTacacsDest": {
+        "fileRsARemoteHostToEpg": {
           "attributes": {
-            "authProtocol": "${each.value["auth_protocol"]}",
-            "dn": "uni/fabric/tacacsgroup-${each.value["accounting_group"]}/tacacsdest-${each.value["server"]}-port-${each.value["port"]}",
-            "host": "${each.value["server"]}",
-            "key": "${each.value["secret"]}",
-          },
-          "children": [
-            {
-              "fileRsARemoteHostToEpg": {
-                "attributes": {
-                  "tDn": "${each.value["mgmt_domain_id"]}"
-                }
-              }
-            }
-          ]
+            "tDn": "${var.mgmt_domain_dn}"
+          }
         }
       }
     ]
@@ -52,35 +38,36 @@ resource "aci_rest" "tacacs_accounting" {
 /*
 API Information:
  - Class: "aaaTacacsPlusProvider"
- - Distinguished Name: "userext/tacacsext/tacacsplusprovider-${TACACS_Server}"
+ - Distinguished Name: "userext/tacacsext/tacacsplusprovider-${Provider Group}"
 GUI Location:
- - Admin > AAA > Authentication:TACACS > Create TACACS Provider
+ - Admin > AAA > Authentication:TACACS > Create TACACS+ Provider
 */
 resource "aci_rest" "tacacs_provider" {
-  for_each   = local.tacacs_provider
-  path       = "/api/node/mo/uni/userext/tacacsext/tacacsplusprovider-${TACACS_Server}.json"
+  path       = "/api/node/mo/uni/userext/tacacsext/tacacsplusprovider-${hostname}.json"
   class_name = "aaaTacacsPlusProvider"
   payload    = <<EOF
 {
   "aaaTacacsPlusProvider": {
     "attributes": {
-      "annotation": "${each.value["annotation_provider"]}",
-      "authProtocol": "${each.value["auth_protocol"]}",
-      "descr": "${each.value["description"]}",
-      "dn": "uni/userext/tacacsext/tacacsplusprovider-${each.value["server"]}",
-      "key": "${each.value["secret"]}",
-      "monitorServer": "${each.value["monitor"]}",
-      "name": "${each.value["server"]}",
-      "nameAlias": "${each.value["name_alias_provider"]}",
-      "port": "${each.value["port"]}",
-      "retries": "${each.value["retries"]}",
-      "timeout": "${each.value["timeout"]}",
+      "annotation": "${var.annotation_provider}",
+      "authProtocol": "${var.auth_protocol}",
+      "descr": "${var.descr_provider}",
+      "dn": "uni/userext/tacacsext/tacacsplusprovider-${var.hostname}",
+      "key": "${var.secret}",
+      "monitorServer": "${var.monitor}",
+      "monitoringUser": "${var.monitor_user}"
+      "monitoringPassword": "${var.monitor_pwd}"
+      "name": "${var.hostname}",
+      "nameAlias": "${var.name_alias_provider}",
+      "port": "${var.port}",
+      "retries": "${var.retries}",
+      "timeout": "${var.timeout}",
     },
     "children": [
       {
         "aaaRsSecProvToEpg": {
           "attributes": {
-            "tDn": "${each.value["management_domain"]}"
+            "tDn": "${var.mgmt_domain_dn}"
           },
           "children": []
         }
@@ -91,20 +78,26 @@ resource "aci_rest" "tacacs_provider" {
   EOF
 }
 
+/*
+API Information:
+ - Class: "aaaProviderRef"
+ - Distinguished Name: "uni/userext/tacacsext/tacacsplusprovider-{Provider Group}"
+GUI Location:
+ - Admin > AAA > Authentication
+*/
 resource "aci_rest" "provider_group_tacacs" {
-  for_each   = local.tacacs_provider
-  path       = "/api/node/mo/uni/userext/radiusext/radiusprovider-${each.value["server"]}.json"
+  path       = "/api/node/mo/${var.tacacs_provider_group_dn}.json"
   class_name = "aaaProviderRef"
   payload    = <<EOF
 {
   "aaaProviderRef": {
     "attributes": {
-      "annotation": "${each.value["annotation_prov_grp"]}",
-      "descr": "${each.value["description"]}",
-      "dn": "uni/userext/tacacsext/tacacsplusprovidergroup-${each.value["provider_group"]}/providerref-${each.value["server"]}",
-      "name": "${each.value["server"]}",
-      "nameAlias": "${each.value["name_alias_prov_grp"]}",
-      "order": "${each.value["order"]}",
+      "annotation": "${var.annotation_prov_grp}",
+      "descr": "${var.descr_prov_grp}",
+      "dn": "${var.tacacs_provider_group_dn}/providerref-${var.hostname}",
+      "name": "${var.hostname}",
+      "nameAlias": "${var.name_alias_prov_grp}",
+      "order": "${var.priority}",
     }
   }
 }

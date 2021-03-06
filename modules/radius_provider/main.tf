@@ -10,30 +10,31 @@ GUI Location:
  - Admin > AAA > Authentication:RADIUS > Create RADIUS Provider
 */
 resource "aci_rest" "radius_provider" {
-  for_each   = local.radius_provider
-  path       = "/api/node/mo/uni/userext/radiusext/radiusprovider-${each.value["server"]}.json"
+  path       = "/api/node/mo/uni/userext/radiusext/radiusprovider-${var.hostname}.json"
   class_name = "aaaRadiusProvider"
   payload    = <<EOF
 {
   "aaaRadiusProvider": {
     "attributes": {
-      "annotation": "${each.value["annotation"]}",
-      "authProtocol": "${each.value["auth_protocol"]}",
-      "descr": "${each.value["description"]}",
-      "dn": "uni/userext/radiusext/radiusprovider-${each.value["server"]}",
-      "key": "${each.value["secret"]}",
-      "monitorServer": "${each.value["monitor"]}",
-      "name": "${each.value["server"]}",
-      "nameAlias": "${each.value["name_alias"]}",
-      "port": "${each.value["port"]}",
-      "retries": "${each.value["retries"]}",
-      "timeout": "${each.value["timeout"]}",
+      "annotation": "${var.annotation_provider}",
+      "authProtocol": "${var.auth_protocol}",
+      "descr": "${var.descr_provider}",
+      "dn": "uni/userext/radiusext/radiusprovider-${var.hostname}",
+      "key": "${var.key}",
+      "monitorServer": "${var.monitor}",
+      "monitoringUser": "${var.monitor_user}"
+      "monitoringPassword": "${var.monitor_pwd}"
+      "name": "${var.hostname}",
+      "nameAlias": "${var.name_alias_provider}",
+      "port": "${var.port}",
+      "retries": "${var.retries}",
+      "timeout": "${var.timeout}",
     },
     "children": [
       {
         "aaaRsSecProvToEpg": {
           "attributes": {
-            "tDn": "${each.value["mgmt_domain_id"]}"
+            "tDn": "${var.mgmt_domain_dn}"
           },
           "children": []
         }
@@ -44,20 +45,26 @@ resource "aci_rest" "radius_provider" {
   EOF
 }
 
+/*
+API Information:
+ - Class: "aaaProviderRef"
+ - Distinguished Name: "uni/userext/radiusext/radiusprovider-{Provider Group}"
+GUI Location:
+ - Admin > AAA > Authentication
+*/
 resource "aci_rest" "provider_group_radius" {
-  for_each   = local.radius_provider
-  path       = "/api/node/mo/uni/userext/radiusext/radiusprovider-${each.value["server"]}.json"
+  path       = "/api/node/mo/${var.radius_provider_group_dn}.json"
   class_name = "aaaProviderRef"
   payload    = <<EOF
 {
   "aaaProviderRef": {
     "attributes": {
-      "annotation": "${each.value["annotation_prov_grp"]}",
-      "descr": "${each.value["description"]}",
-      "dn": "uni/userext/radiusext/radiusprovidergroup-${each.value["provider_group"]}/providerref-${each.value["server"]}",
-      "name": "${each.value["server"]}",
-      "nameAlias": "${each.value["name_alias_prov_grp"]}",
-      "order": "${each.value["order"]}",
+      "annotation": "${var.annotation_prov_grp}",
+      "descr": "${var.descr_prov_grp}",
+      "dn": "${var.radius_provider_group_dn}/providerref-${var.hostname}",
+      "name": "${var.hostname}",
+      "nameAlias": "${var.name_alias_prov_grp}",
+      "order": "${var.priority}",
     }
   }
 }

@@ -19,7 +19,7 @@ variable "description" {
 variable "name" {
   description = "A Name for The Login Domain."
   type        = string
-  default     = "RADIUS"
+  default     = "TACACS"
 }
 
 variable "name_alias" {

@@ -17,7 +17,6 @@ GUI Location:
  - Admin > AAA > Security
 */
 resource "aci_rest" "system_security" {
-  for_each   = local.system_security
   path       = "/api/node/mo/uni/userext.json"
   class_name = "aaaUserEp"
   payload    = <<EOF
@@ -25,21 +24,21 @@ resource "aci_rest" "system_security" {
   "aaaUserEp": {
     "attributes": {
       "dn": "uni/userext",
-      "pwdStrengthCheck": "${each.value["pwd_strength_check"]}"(boolean)
+      "pwdStrengthCheck": "${var.pwd_strength_check}"
     },
     "children": [
       {
         "aaaPwdProfile": {
           "attributes": {
-            "annotation": "${each.value["annotation_aaaPwd"]}",
-            "changeCount": "${each.value["change_count"]}",2,0-10
-            "changeDuringInterval": "${each.value["enforce_interval"]}",(enable|disable)
-            "ChangeInterval": "${each.value["pwd_change_interval"]}",48,0-745
+            "annotation": "${var.annotation_aaaPwd}",
+            "changeCount": "${var.pwd_change_count}",
+            "changeDuringInterval": "${var.pwd_enforce_interval}",
+            "ChangeInterval": "${var.pwd_change_interval}",
             "descr": "",
             "dn": "uni/userext/pwdprofile",
-            "expirationWarnTime": "15",
-            "noChangeInterval": "${each.value["pwd_nochange_interval"]}",
-            "historyCount": "${each.value["pwd_to_store"]}"5,0-15
+            "expirationWarnTime": "${var.pwd_expiration_warn}",
+            "noChangeInterval": "${var.pwd_nochange_interval}",
+            "historyCount": "${var.pwd_history}"
           },
           "children": []
         }
@@ -47,13 +46,13 @@ resource "aci_rest" "system_security" {
       {
         "aaaBlockLoginProfile": {
           "attributes": {
-            "annotation": "${each.value["annotation_aaaBlock"]}",
-            "blockDuration": "${each.value["duration_lockout"]}",60,1-1440
+            "annotation": "${var.annotation_aaaBlock}",
+            "blockDuration": "${var.lockout_duration}"
             "descr": "",
             "dn": "uni/userext/blockloginp",
-            "enableLoginBlock": "${each.value["lockout"]}",(enable|disable)
-            "maxFailedAttempts": "${each.value["max_failed_attempts"]}",5,1-15
-            "maxFailedAttemptsWindow": "${each.value["max_failed_window"]}",5,1-720
+            "enableLoginBlock": "${var.lockout}",
+            "maxFailedAttempts": "${var.lockout_max_failed_attempts}",
+            "maxFailedAttemptsWindow": "${var.lockout_time_period}"
           },
           "children": []
         }
@@ -68,9 +67,9 @@ resource "aci_rest" "system_security" {
               "pkiWebTokenData": {
                 "attributes": {
                   "dn": "uni/userext/pkiext/webtokendata",
-                  "maximumValidityPeriod": "${each.value["webtoken_validity"]}",24,4-24
-                  "webtokenTimeoutSeconds": "${each.value["webtoken_timeout"]}",600,300-9600
-                  "uiIdleTimeoutSeconds": "${each.value["web_idle_timeout"]}",1200,60-65525
+                  "maximumValidityPeriod": "${var.webtoken_validity}",
+                  "webtokenTimeoutSeconds": "${var.webtoken_timeout}",
+                  "uiIdleTimeoutSeconds": "${var.web_idle_timeout}",
                 },
                 "children": []
               }
