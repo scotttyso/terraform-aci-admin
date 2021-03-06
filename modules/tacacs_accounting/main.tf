@@ -20,7 +20,7 @@ resource "aci_rest" "tacacs_accounting" {
       "dn": "uni/fabric/tacacsgroup-${var.name}",
       "descr": "${var.description}",
       "name": "${var.name}",
-      "nameAlias": "${var.name_alias}",
+      "nameAlias": "${var.name_alias}"
     },
     "children": []
   }

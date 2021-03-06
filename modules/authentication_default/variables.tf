@@ -17,7 +17,7 @@ variable "name_alias" {
 }
 
 variable "provider_group" {
-  description = "The Name for the Provider Group that was created with the Login Domain.  If the realm is local then leave this blank"
+  description = "The Name for the Provider Group that was created with the Login Domain.  If the realm is local then leave this blank."
   type        = string
   default     = ""
 }
@@ -33,7 +33,7 @@ variable "realm" {
 }
 
 variable "realm_subtype" {
-  description = "Realm subtype that can be default or Duo.  Default is default"
+  description = "Realm subtype that can be default or Duo.  Default is default."
   type        = string
   default     = "default"
   validation {
