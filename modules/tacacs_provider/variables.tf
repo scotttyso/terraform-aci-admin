@@ -118,11 +118,6 @@ variable "port" {
   }
 }
 
-variable "TACACS_provider_group_dn" {
-  description = "The Distinguished Name for the TACACS+ Provider Group."
-  type        = string
-}
-
 variable "retries" {
   description = "The number of retries when contacting the TACACS+ endpoint. The range is from 0 to 5 retries. The default 1."
   type        = number
@@ -134,6 +129,11 @@ variable "retries" {
     )
     error_message = "The retry value should be between 0 and 5."
   }
+}
+
+variable "tacacs_provider_group" {
+  description = "The Name for the TACACS+ Provider Group."
+  type        = string
 }
 
 variable "timeout" {

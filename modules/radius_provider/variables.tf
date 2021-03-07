@@ -1,5 +1,11 @@
-variable "annotation" {
-  description = "Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
+variable "annotation_provider" {
+  description = "Annotation for the Provider.  Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
+  type        = string
+  default     = ""
+}
+
+variable "annotation_prov_grp" {
+  description = "Annotation for the provider in the Provider Group.  Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
   type        = string
   default     = ""
 }
@@ -14,8 +20,14 @@ variable "auth_protocol" {
   }
 }
 
-variable "description" {
+variable "descr_provider" {
   description = "The description of the RADIUS provider."
+  type        = string
+  default     = ""
+}
+
+variable "descr_prov_grp" {
+  description = "The Description for the provider in the Provider Group."
   type        = string
   default     = ""
 }
@@ -63,8 +75,14 @@ variable "monitor_pwd" {
   default     = ""
 }
 
-variable "name_alias" {
-  description = "A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
+variable "name_alias_provider" {
+  description = "Alias for the TACACS+ Provider.  A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
+  type        = string
+  default     = ""
+}
+
+variable "name_alias_prov_grp" {
+  description = "Alias for the TACACS+ Provider Group Reference.  A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
   type        = string
   default     = ""
 }
@@ -80,6 +98,24 @@ variable "port" {
     )
     error_message = "The RADIUS port should be between 1 and 65535."
   }
+}
+
+variable "priority" {
+  description = "Choose a higher priority, (order), for the server to authenticate first.  The highest priority is 0 and lowest is 17.  Default is 0."
+  type        = number
+  default     = 0
+  validation {
+    condition = (
+      var.priority >= 0 &&
+      var.priority <= 17
+    )
+    error_message = "The priority should be between 0 and 17."
+  }
+}
+
+variable "radius_provider_group" {
+  description = "The Name for the RADIUS Provider Group."
+  type        = string
 }
 
 variable "retries" {

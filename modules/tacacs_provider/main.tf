@@ -43,7 +43,7 @@ GUI Location:
  - Admin > AAA > Authentication:TACACS > Create TACACS+ Provider
 */
 resource "aci_rest" "tacacs_provider" {
-  path       = "/api/node/mo/uni/userext/tacacsext/tacacsplusprovider-${hostname}.json"
+  path       = "/api/node/mo/uni/userext/tacacsext/tacacsplusprovider-${var.hostname}.json"
   class_name = "aaaTacacsPlusProvider"
   payload    = <<EOF
 {
@@ -53,10 +53,10 @@ resource "aci_rest" "tacacs_provider" {
       "authProtocol": "${var.auth_protocol}",
       "descr": "${var.descr_provider}",
       "dn": "uni/userext/tacacsext/tacacsplusprovider-${var.hostname}",
-      "key": "${var.secret}",
+      "key": "${var.key}",
       "monitorServer": "${var.monitor}",
-      "monitoringUser": "${var.monitor_user}"
-      "monitoringPassword": "${var.monitor_pwd}"
+      "monitoringUser": "${var.monitor_user}",
+      "monitoringPassword": "${var.monitor_pwd}",
       "name": "${var.hostname}",
       "nameAlias": "${var.name_alias_provider}",
       "port": "${var.port}",
@@ -85,8 +85,9 @@ API Information:
 GUI Location:
  - Admin > AAA > Authentication
 */
-resource "aci_rest" "provider_group_tacacs" {
-  path       = "/api/node/mo/${var.tacacs_provider_group_dn}.json"
+resource "aci_rest" "tacacs_provider_group" {
+  depends_on = [aci_rest.tacacs_provider]
+  path       = "/api/node/mo/uni/userext/tacacsext/tacacsplusprovidergroup-${var.tacacs_provider_group}.json"
   class_name = "aaaProviderRef"
   payload    = <<EOF
 {
@@ -94,7 +95,7 @@ resource "aci_rest" "provider_group_tacacs" {
     "attributes": {
       "annotation": "${var.annotation_prov_grp}",
       "descr": "${var.descr_prov_grp}",
-      "dn": "${var.tacacs_provider_group_dn}/providerref-${var.hostname}",
+      "dn": "uni/userext/tacacsext/tacacsplusprovidergroup-${var.tacacs_provider_group}/providerref-${var.hostname}",
       "name": "${var.hostname}",
       "nameAlias": "${var.name_alias_prov_grp}",
       "order": "${var.priority}",

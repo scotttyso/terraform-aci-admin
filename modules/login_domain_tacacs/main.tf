@@ -31,10 +31,10 @@ resource "aci_rest" "login_domain_tacacs" {
             {
               "aaaDomainAuth": {
                 "attributes": {
-                  "annotation": "${var.annotation_domainauth}",
+                  "annotation": "${var.annotation_providergroup}",
                   "descr": "${var.description}",
                   "dn": "uni/userext/logindomain-${var.name}/domainauth",
-                  "providerGroup": "${var.provider_group}",
+                  "providerGroup": "${local.provider_group}",
                   "realm": "tacacs"
                 },
                 "children": []
@@ -52,8 +52,8 @@ resource "aci_rest" "login_domain_tacacs" {
             {
               "aaaTacacsPlusProviderGroup": {
                 "attributes": {
-                  "dn": "uni/userext/tacacsext/tacacsplusprovidergroup-${var.provider_group}",
-                  "name": "${var.provider_group}"
+                  "dn": "uni/userext/tacacsext/tacacsplusprovidergroup-${local.provider_group}",
+                  "name": "${local.provider_group}"
                 },
                 "children": []
               }

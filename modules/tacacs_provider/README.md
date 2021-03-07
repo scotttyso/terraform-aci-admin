@@ -63,7 +63,6 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| TACACS\_provider\_group\_dn | The Distinguished Name for the TACACS+ Provider Group. | `string` | n/a | yes |
 | accounting\_group\_dn | The Distinguished Name for the TACACS+ Accounting Group. | `string` | n/a | yes |
 | annotation\_prov\_grp | Annotation for the provider in the Provider Group.  Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | annotation\_provider | Annotation for the Provider.  Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
@@ -81,6 +80,7 @@ No Modules.
 | port | The service port number for the TACACS+ service. The range is from 1 to 65535. The default is 49. | `number` | `1812` | no |
 | priority | Choose a higher priority, (order), for the server to authenticate first.  The highest priority is 0 and lowest is 17.  Default is 0. | `number` | `0` | no |
 | retries | The number of retries when contacting the TACACS+ endpoint. The range is from 0 to 5 retries. The default 1. | `number` | `1` | no |
+| tacacs\_provider\_group | The Name for the TACACS+ Provider Group. | `string` | n/a | yes |
 | timeout | The timeout for communication with a TACACS+ provider server. The range is from 1 to 60 seconds. The default is 5 seconds. If set to 0, the AAA provider timeout is used. | `number` | `5` | no |
 
 ## Outputs
