@@ -9,7 +9,7 @@ API Information:
 GUI Location:
  - Admin > AAA > Authentication:AAA > Default Authentication
 */
-resource "aci_rest" "authentication_console" {
+resource "aci_rest" "authentication_default" {
   path       = "/api/node/mo/uni/userext/authrealm/defaultauth.json"
   class_name = "aaaConsoleAuth"
   payload    = <<EOF
@@ -21,8 +21,7 @@ resource "aci_rest" "authentication_console" {
       "dn": "uni/userext/authrealm/defaultauth",
       "nameAlias": "${var.name_alias}",
       "providerGroup": "${var.provider_group}",
-      "realm": "${var.realm}"
-      "realmSubType": "${var.realm_subtype}"
+      "realm": "${var.realm}",
     },
     "children": []
   }

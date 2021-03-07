@@ -21,8 +21,7 @@ resource "aci_rest" "authentication_console" {
       "dn": "uni/userext/authrealm/consoleauth",
       "nameAlias": "${var.name_alias}",
       "providerGroup": "${var.provider_group}",
-      "realm": "${var.realm}"
-      "realmSubType": "${var.realm_subtype}"
+      "realm": "${var.realm}",
     },
     "children": []
   }

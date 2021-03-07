@@ -11,7 +11,7 @@ module "authentication_console" {
 }
 ```
 
-This module will Configure the Autnetication Realm for Console based Authentication.
+Use this Module with ACI 4.X and below to configure the Autnetication Realm for Console based Authentication.
 
 ## APIC Reference Information
 
