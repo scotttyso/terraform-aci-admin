@@ -16,19 +16,19 @@ resource "aci_rest" "radius_provider" {
 {
   "aaaRadiusProvider": {
     "attributes": {
-      "annotation": "${var.annotation_provider}",
+      "annotation": "${var.annotation}",
+      "authPort": "${var.port}",
       "authProtocol": "${var.auth_protocol}",
-      "descr": "${var.descr_provider}",
+      "descr": "${var.description}",
       "dn": "uni/userext/radiusext/radiusprovider-${var.hostname}",
       "key": "${var.key}",
       "monitorServer": "${var.monitor}",
-      "monitoringUser": "${var.monitor_user}"
-      "monitoringPassword": "${var.monitor_pwd}"
+      "monitoringUser": "${var.monitor_user}",
+      "monitoringPassword": "${var.monitor_pwd}",
       "name": "${var.hostname}",
-      "nameAlias": "${var.name_alias_provider}",
-      "port": "${var.port}",
+      "nameAlias": "${var.name_alias}",
       "retries": "${var.retries}",
-      "timeout": "${var.timeout}",
+      "timeout": "${var.timeout}"
     },
     "children": [
       {
@@ -40,32 +40,6 @@ resource "aci_rest" "radius_provider" {
         }
       }
     ]
-  }
-}
-  EOF
-}
-
-/*
-API Information:
- - Class: "aaaProviderRef"
- - Distinguished Name: "uni/userext/radiusext/radiusprovider-{Provider Group}"
-GUI Location:
- - Admin > AAA > Authentication
-*/
-resource "aci_rest" "provider_group_radius" {
-  path       = "/api/node/mo/${var.radius_provider_group_dn}.json"
-  class_name = "aaaProviderRef"
-  payload    = <<EOF
-{
-  "aaaProviderRef": {
-    "attributes": {
-      "annotation": "${var.annotation_prov_grp}",
-      "descr": "${var.descr_prov_grp}",
-      "dn": "${var.radius_provider_group_dn}/providerref-${var.hostname}",
-      "name": "${var.hostname}",
-      "nameAlias": "${var.name_alias_prov_grp}",
-      "order": "${var.priority}",
-    }
   }
 }
   EOF

@@ -34,7 +34,7 @@ resource "aci_rest" "login_domain_radius" {
                   "annotation": "${var.annotation_providergroup}",
                   "descr": "${var.description}",
                   "dn": "uni/userext/logindomain-${var.name}/domainauth",
-                  "providerGroup": "${var.provider_group}",
+                  "providerGroup": "${local.provider_group}",
                   "realm": "radius"
                 },
                 "children": []
@@ -52,7 +52,7 @@ resource "aci_rest" "login_domain_radius" {
             {
               "aaaRadiusProviderGroup": {
                 "attributes": {
-                  "dn": "uni/userext/radiusext/radiusprovidergroup-${var.provider_group}"
+                  "dn": "uni/userext/radiusext/radiusprovidergroup-${local.provider_group}"
                 },
                 "children": []
               }

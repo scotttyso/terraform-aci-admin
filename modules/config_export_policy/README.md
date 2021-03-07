@@ -1,11 +1,11 @@
-# backup_policy - Create a Configuration Export Policy Terraform Module - aci_rest
+# config_export_policy - Create a Configuration Export Policy Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "backup_policy" {
+module "config_export_policy" {
 
-  source = "terraform-aci-access//modules/backup_policy"
+  source = "terraform-aci-access//modules/config_export_policy"
 
   # omitted...
 }
@@ -55,8 +55,8 @@ No Modules.
 | format | The data format to be used when exporting the configuration export policy. The format can be:<br>  * json<br>  * xml<br>The default is json. | `string` | `"json"` | no |
 | name | The name of the configuration export policy. For ease of reference, include details such as: the format of the export, how often the policy will run, and where the configuration will be exported. The name cannot be changed after the policy has been created. | `string` | `"Daily_Backup"` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
-| remote\_host\_dn | The Distinguished Name of the remote host for the configuration export policy. | `string` | n/a | yes |
-| scheduler\_dn | The Distinguished Name of the scheduler policy used for running scheduled export jobs for the configuration export policy. | `string` | n/a | yes |
+| remote\_host | The Name of the remote host for the configuration export policy. | `string` | n/a | yes |
+| scheduler | The Name of the scheduler policy used for running scheduled export jobs for the configuration export policy. | `string` | n/a | yes |
 | secure\_fields | A flag of whether or not to include secure fields in the configuration backup.  This should be true most of the time.  Remember that Global AES Encryption should be configured before enabling this policy to encrypt the configuration export. | `bool` | `true` | no |
 | snapshot | Indicates if a snapshot of the configuration export policy is included. The values can be:<br>  * true — A snapshot of the configuration export policy is included.<br>  * false — A snapshot of the configuration export policy is not included. | `bool` | `true` | no |
 | target\_dn | The distinguished name of the object to be exported. The policy universe is exported by default. By default leave this blank | `string` | `""` | no |

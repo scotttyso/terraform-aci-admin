@@ -35,5 +35,5 @@ variable "provider_group" {
 }
 
 locals {
-  provider_group = coalesce(v.provider_group, v.name)
+  provider_group = coalesce(var.provider_group, var.name)
 }

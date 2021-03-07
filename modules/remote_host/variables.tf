@@ -27,7 +27,7 @@ variable "mgmt_domain_id" {
 }
 
 variable "name" {
-  description = "A Name for The destination for data export.  If this is not defined the remote_host value will be used for the name."
+  description = "A Name for The Remote Location Policy.  If this is not defined the remote_host value will be used for the name."
   type        = string
   default     = ""
 }
@@ -101,5 +101,5 @@ variable "password" {
 }
 
 locals {
-  name = coalesce(v.name, v.remote_host)
+  name = coalesce(var.name, var.remote_host)
 }

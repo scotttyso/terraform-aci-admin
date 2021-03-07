@@ -52,7 +52,7 @@ No Modules.
 | annotation\_scheduler | Annotation for the Scheduler.  Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | annotation\_window | Annotation for the Window.  Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | days | The day of the week that the recurring window begins. Options are:<br> * every-day<br> * Monday<br> * Tuesday<br> * Wednesday<br> * Thursday<br> * Friday<br> * Saturday<br> * Sunday<br> * odd-day<br> * even-day | `string` | `"every-day"` | no |
-| description | A Description for the Remote Host. | `string` | `""` | no |
+| description | A Description for the Triggered Scheduler. | `string` | `""` | no |
 | hour | The hour that the recurring window begins. Specify the hour as 0 to 24. | `number` | `0` | no |
 | max\_concurrent\_nodes | The concurrency capacity limit. This is the maximum number of tasks that can be processed concurrently.  Default is 0.  Value options are between 0 and 65535 | `number` | `0` | no |
 | max\_running\_time | The processing time capacity limit. This is the maximum duration of the window. The range is 0 to (2^64 - 1) milliseconds. The default value of 0 indicates unlimited, meaning there is no time limit enforced on the scheduler window. | `number` | `0` | no |

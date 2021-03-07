@@ -101,5 +101,5 @@ variable "password" {
 }
 
 locals {
-  name = coalesce(v.name, v.remote_host)
+  name = coalesce(var.name, var.remote_host)
 }

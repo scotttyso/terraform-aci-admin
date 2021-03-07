@@ -1,37 +1,37 @@
-# variable "community1" {
-#   type      = string
-#   sensitive = true
-# }
-#
-# variable "community2" {
-#   type      = string
-#   sensitive = true
-# }
-#
-# variable "auth_key1" {
-#   type      = string
-#   sensitive = true
-# }
-#
-# variable "auth_key2" {
-#   type      = string
-#   sensitive = true
-# }
-#
-# variable "priv_key2" {
-#   type      = string
-#   sensitive = true
-# }
-#
-# variable "snmp_user1" {
-#   type      = string
-#   sensitive = true
-# }
-#
-# variable "snmp_user2" {
-#   type      = string
-#   sensitive = true
-# }
+variable "encryption_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "oob_mgmt_domain" {
+  type    = string
+  default = "uni/tn-mgmt/mgmtp-default/oob-default"
+}
+
+variable "host1_username" {
+  type      = string
+  sensitive = true
+}
+
+variable "host1_password" {
+  type      = string
+  sensitive = true
+}
+
+variable "host2_ssh_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "host2_ssh_passphrase" {
+  type      = string
+  sensitive = true
+}
+
+variable "key" {
+  type      = string
+  sensitive = true
+}
 
 variable "aciUser" {
   description = "If using a Domain with the User Remember to add apic#[domain]\\<username>"

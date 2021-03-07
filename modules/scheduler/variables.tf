@@ -21,7 +21,7 @@ variable "days" {
 }
 
 variable "description" {
-  description = "A Description for the Remote Host."
+  description = "A Description for the Triggered Scheduler."
   type        = string
   default     = ""
 }
@@ -103,5 +103,5 @@ variable "name_alias_window" {
 }
 
 locals {
-  name_window = coalesce(v.name_window, v.name_scheduler)
+  name_window = coalesce(var.name_window, var.name_scheduler)
 }

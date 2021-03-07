@@ -1,6 +1,6 @@
-#--------------------------------------------------------
-# Configure the Backup Policy for Configuration Export
-#--------------------------------------------------------
+#--------------------------------------------------------------------
+# Configure the Configuration Export Policy for Configuration Export
+#--------------------------------------------------------------------
 
 /*
 API Information:
@@ -9,7 +9,7 @@ API Information:
 GUI Location:
  - Admin > Import/Export > Export Policies > Configuration > {name}
 */
-resource "aci_rest" "backup_policy" {
+resource "aci_rest" "config_export_policy" {
   path       = "/api/node/mo/uni/fabric/configexp-${var.name}.json"
   class_name = "configExportP"
   payload    = <<EOF
@@ -31,7 +31,7 @@ resource "aci_rest" "backup_policy" {
       {
         "configRsExportScheduler": {
           "attributes": {
-            "tDn": "${var.scheduler_dn}"
+            "tnTrigSchedPName": "${var.scheduler}"
           },
           "children": []
         }
@@ -39,7 +39,7 @@ resource "aci_rest" "backup_policy" {
       {
         "configRsRemotePath": {
           "attributes": {
-            "tnFileRemotePathName": "${remote_host_dn}"
+            "tnFileRemotePathName": "${var.remote_host}"
           },
           "children": []
         }

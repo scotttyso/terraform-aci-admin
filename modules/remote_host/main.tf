@@ -1,6 +1,6 @@
-#--------------------------------------------------------
-# Configure a Remote Host for Configuration Export
-#--------------------------------------------------------
+#---------------------------------------------------------
+# Configure a Remote Host for Configuration Import/Export
+#---------------------------------------------------------
 
 /*
 API Information:
@@ -22,7 +22,7 @@ resource "aci_rest" "remote_host" {
       "descr": "${var.description}",
       "host": "${var.remote_host}",
       "identityPrivateKeyContents": "${var.ssh_key}",
-      "identityPrivateKeyPassphrase": "${var.passphrase}",
+      "identityPrivateKeyPassphrase": "${var.ssh_passphrase}",
       "name": "${local.name}",
       "nameAlias": "${var.name_alias}",
       "protocol": "${var.protocol}",

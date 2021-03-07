@@ -1,17 +1,17 @@
-# backup_remote_host - Configuration Backup to Remote Host Terraform Module - aci_rest
+# remote_host - Configuration Import/Export Remote Location Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "backup_remote_host" {
+module "remote_host" {
 
-  source = "terraform-aci-access//modules/backup_remote_host"
+  source = "terraform-aci-access//modules/remote_host"
 
   # omitted...
 }
 ```
 
-This module will Configure the Remote Host for a Configuration Export Policy.
+This module will Create a Remote Host for a Configuration Import/Export Policy.
 
 ## APIC Reference Information
 
@@ -53,7 +53,7 @@ No Modules.
 | auth\_type | The authentication type to be used to authenticate the user. The authentication type can be:<br>  * usePassword<br>  * useSshKeyContents | `string` | `"usePassword"` | no |
 | description | A Description for the Remote Host. | `string` | `""` | no |
 | mgmt\_domain\_id | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `"uni/tn-mgmt/mgmtp-default/oob-default"` | no |
-| name | A Name for The destination for data export.  If this is not defined the remote\_host value will be used for the name. | `string` | `""` | no |
+| name | A Name for The Remote Location Policy.  If this is not defined the remote\_host value will be used for the name. | `string` | `""` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | password | The password to be used to transfer data to the destination. Only required for usePassword auth\_type. | `string` | `""` | no |
 | protocol | The transfer protocol to be used for data export. The protocols can be: ftp, scp or sftp. | `string` | `"sftp"` | no |
