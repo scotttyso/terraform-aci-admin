@@ -11,14 +11,14 @@ GUI Location:
 */
 resource "aci_rest" "node_firmware_block" {
   for_each   = local.node_firmware_block
-  path       = "/api/node/mo/${each.value["firmware_group_dn"]}/nodeblk-blk${node_id_from}-${node_id_to}.json"
+  path       = "/api/node/mo/${each.value["firmware_group_dn"]}/nodeblk-blk${each.value["node_id_from"]}-${each.value["node_id_to"]}.json"
   class_name = "fabricNodeBlk"
   payload    = <<EOF
 {
   "fabricNodeBlk": {
     "attributes": {
-      "annotation": "${var.each.value["annotation"]}",
-      "descr": "${var.each.value["description"]}",
+      "annotation": "${each.value["annotation"]}",
+      "descr": "${each.value["description"]}",
       "dn": "${each.value["firmware_group_dn"]}/nodeblk-blk${each.value["node_id_from"]}-${each.value["node_id_to"]}",
       "from_": "${each.value["node_id_from"]}",
       "name": "blk${each.value["node_id_from"]}-${each.value["node_id_to"]}",

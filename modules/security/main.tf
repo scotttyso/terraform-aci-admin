@@ -33,7 +33,7 @@ resource "aci_rest" "system_security" {
             "annotation": "${var.annotation_aaaPwd}",
             "changeCount": "${var.pwd_change_count}",
             "changeDuringInterval": "${var.pwd_enforce_interval}",
-            "ChangeInterval": "${var.pwd_change_interval}",
+            "changeInterval": "${var.pwd_change_interval}",
             "descr": "",
             "dn": "uni/userext/pwdprofile",
             "expirationWarnTime": "${var.pwd_expiration_warn}",
@@ -47,7 +47,7 @@ resource "aci_rest" "system_security" {
         "aaaBlockLoginProfile": {
           "attributes": {
             "annotation": "${var.annotation_aaaBlock}",
-            "blockDuration": "${var.lockout_duration}"
+            "blockDuration": "${var.lockout_duration}",
             "descr": "",
             "dn": "uni/userext/blockloginp",
             "enableLoginBlock": "${var.lockout}",

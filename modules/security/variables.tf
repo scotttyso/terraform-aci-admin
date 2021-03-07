@@ -49,7 +49,7 @@ variable "lockout_max_failed_attempts" {
 variable "lockout_time_period" {
   description = "The time period, in minutes, during which consecutive failed login attempts are counted for lockout purposes. The range is from 1 minutes to 720 minutes. The default is 5 minutes."
   type        = number
-  default     = 0
+  default     = 5
   validation {
     condition = (
       var.lockout_time_period >= 1 &&
@@ -75,7 +75,7 @@ variable "pwd_change_count" {
 variable "pwd_change_interval" {
   description = "The maximum number of hours over which the number of password changes specified in the Change Interval field are enforced. The range is from 1 to 745 hours. The default is 48.\n\nFor example, if this field is set to 48 and the Change Interval field is set to 2, a locally authenticated user can make no more than 2 password changes within a 48 hour period."
   type        = number
-  default     = 0
+  default     = 48
   validation {
     condition = (
       var.pwd_change_interval >= 1 &&
@@ -136,11 +136,11 @@ variable "pwd_nochange_interval" {
 
 variable "pwd_strength_check" {
   description = "Cisco recommends using a strong password enforcement. The default value is true."
-  type        = bool
-  default     = true
+  type        = string
+  default     = "yes"
   validation {
-    condition     = (var.pwd_strength_check == true || var.pwd_strength_check == false)
-    error_message = "The pwd_strength_check should be equal to either true or false."
+    condition     = (var.pwd_strength_check == "yes" || var.pwd_strength_check == "no")
+    error_message = "The pwd_strength_check should be equal to either yes or no."
   }
 }
 
