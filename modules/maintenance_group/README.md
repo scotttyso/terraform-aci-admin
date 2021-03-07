@@ -1,25 +1,25 @@
-# vpc_domains - ACI VPC Domain Terraform Module - aci_rest
+# maintenance_group - Maintenance Group Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "vpc_domains" {
+module "maintenance_group" {
 
-  source = "terraform-aci-access//modules/vpc_domains"
+  source = "terraform-aci-access//modules/maintenance_group"
 
   # omitted...
 }
 ```
 
-This module will Add an Explicit VPC Protection Group to the Virtual Port Channel default Policy.
+Use this module with ACI 4.X and below to create a Maintenance Group Policy.
 
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.
 
-* Class: "fabricExplicitGEp"
-* Distinguished Name: "uni/fabric/protpol/expgep-{Name}"
-* GUI Location: Fabric > Access Policies > Policies > Virtual Port Channel default
+* Class: "maintMaintGrp"
+* Distinguished Name: "uni/fabric/maintgrp-{name}"
+* GUI Location: Admin > Firmware > Nodes > Actions > Create Update Group
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

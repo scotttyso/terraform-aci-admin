@@ -4,7 +4,7 @@
 
 /*
 API Information:
- - Class: "maintRsMgrpp"
+ - Class: "maintMaintP"
  - Distinguished Name: "uni/fabric/maintpol-{name}"
 GUI Location:
  - This is not available from the UI

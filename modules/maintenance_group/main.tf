@@ -4,8 +4,8 @@
 
 /*
 API Information:
- - Class: "firmwareFwGrp"
- - Distinguished Name: "uni/fabric/fwgrp-{name}"
+ - Class: "maintMaintGrp"
+ - Distinguished Name: "uni/fabric/maintgrp-{name}"
 GUI Location:
  - Admin > Firmware > Nodes > Actions > Create Update Group
 */

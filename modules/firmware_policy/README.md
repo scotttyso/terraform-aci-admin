@@ -1,25 +1,25 @@
-# vpc_domains - ACI VPC Domain Terraform Module - aci_rest
+# firmware_policy - Firmware Policy Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "vpc_domains" {
+module "firmware_policy" {
 
-  source = "terraform-aci-access//modules/vpc_domains"
+  source = "terraform-aci-access//modules/firmware_policy"
 
   # omitted...
 }
 ```
 
-This module will Add an Explicit VPC Protection Group to the Virtual Port Channel default Policy.
+Use this module with ACI 5.X and above to create a Firmware Policy.
 
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.
 
-* Class: "fabricExplicitGEp"
-* Distinguished Name: "uni/fabric/protpol/expgep-{Name}"
-* GUI Location: Fabric > Access Policies > Policies > Virtual Port Channel default
+* Class: "firmwareFwP"
+* Distinguished Name: "uni/fabric/fwpol-{name}"
+* GUI Location: This is not available from the UI
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

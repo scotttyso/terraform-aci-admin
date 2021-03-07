@@ -5,7 +5,7 @@
 /*
 API Information:
  - Class: "fabricNodeBlk"
- - Distinguished Name: "uni/fabric/maintgrp-{Maintenance Group Name}/nodeblk-{name}"
+ - Distinguished Name: "uni/fabric/maintgrp-{Maintenance Group Name}/nodeblk-{Block Name}"
 GUI Location:
  - Admin > Firmware > Nodes > {Maintenance Group Name}
 */

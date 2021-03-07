@@ -1,25 +1,25 @@
-# firmware_node_block - Firmware Group Node Block Terraform Module
+# maintenance_node_block - Maintenance Group Node Block Terraform Module
 
 ## Usage
 
 ```hcl
-module "firmware_node_block" {
+module "maintenance_node_block" {
 
-  source = "terraform-aci-access//modules/firmware_node_block"
+  source = "terraform-aci-access//modules/maintenance_node_block"
 
   # omitted...
 }
 ```
 
-Use this module to Assign Leaf/Spine Nodes to a Firmware Policy Group.
+Use this module to with ACI 4.X and below to assign Leaf/Spine Nodes to a Maintenance Policy Group.
 
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.
 
 * Class: "fabricNodeBlk"
-* Distinguished Name: "uni/fabric/fwgrp-{Firmware Group Name}/nodeblk-{name}"
-* GUI Location: Admin > Firmware > Nodes > {Firmware Group Name}
+* Distinguished Name: "uni/fabric/maintgrp-{Maintenance Group Name}/nodeblk-{Block Name}"
+* GUI Location: Admin > Firmware > Nodes > {Maintenance Group Name}
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
