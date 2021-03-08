@@ -23,6 +23,12 @@ Use the Class or Distinguished Name to verify in the API.
 * Distinguished Name: "uni/userext/radiusext/radiusprovider-{Radius Server}"
 * GUI Location: Admin > AAA > Authentication:RADIUS > Create RADIUS Provider
 
+**RADIUS Provider Group Reference:**
+
+* Class: "aaaProviderRef"
+* Distinguished Name: "uni/userext/radiusext/radiusprovider-{Provider Group}"
+* GUI Location: Admin > AAA > Authentication
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
