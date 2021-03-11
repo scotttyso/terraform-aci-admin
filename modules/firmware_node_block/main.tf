@@ -9,24 +9,12 @@ API Information:
 GUI Location:
  - Admin > Firmware > Nodes > {Firmware Group Name}
 */
-resource "aci_rest" "node_firmware_block" {
-  for_each   = local.node_firmware_block
-  path       = "/api/node/mo/${each.value["firmware_group_dn"]}/nodeblk-blk${each.value["node_id_from"]}-${each.value["node_id_to"]}.json"
-  class_name = "fabricNodeBlk"
-  payload    = <<EOF
-{
-  "fabricNodeBlk": {
-    "attributes": {
-      "annotation": "${each.value["annotation"]}",
-      "descr": "${each.value["description"]}",
-      "dn": "${each.value["firmware_group_dn"]}/nodeblk-blk${each.value["node_id_from"]}-${each.value["node_id_to"]}",
-      "from_": "${each.value["node_id_from"]}",
-      "name": "blk${each.value["node_id_from"]}-${each.value["node_id_to"]}",
-      "nameAlias": "${each.value["name_alias"]}",
-      "to_": "${each.value["node_id_to"]}",
-    },
-    "children": []
-  }
-}
-  EOF
+resource "aci_node_block_firmware" "example" {
+  for_each          = local.node_firmware_block
+  annotation        = each.value["annotation"]
+  firmware_group_dn = each.value["firmware_group_dn"]
+  from_             = each.value["node_id_from"]
+  name              = "blk${each.value["node_id_from"]}-${each.value["node_id_to"]}"
+  name_alias        = each.value["name_alias"]
+  to_               = each.value["node_id_to"]
 }

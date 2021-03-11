@@ -43,7 +43,7 @@ No Modules.
 
 | Name |
 |------|
-| [aci_rest](https://registry.terraform.io/providers/ciscodevnet/aci/0.5.2/docs/resources/rest) |
+| [aci_node_block_firmware](https://registry.terraform.io/providers/ciscodevnet/aci/0.5.2/docs/resources/node_block_firmware) |
 
 ## Inputs
 
