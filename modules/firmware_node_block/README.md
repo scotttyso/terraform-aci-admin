@@ -49,7 +49,7 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| node\_firmware\_block | Add Nodes to a Firmware Group Policy. | <pre>map(object({<br>    annotation        = optional(string)<br>    description       = optional(string)<br>    firmware_group_dn = optional(string)<br>    name_alias        = optional(string)<br>    node_id_from      = optional(number)<br>    node_id_to        = optional(number)<br>  }))</pre> | <pre>{<br>  "default": {<br>    "annotation": "",<br>    "description": "",<br>    "firmware_group_dn": "",<br>    "name_alias": "",<br>    "node_id_from": 201,<br>    "node_id_to": 201<br>  }<br>}</pre> | no |
+| firmware\_node\_block | Add Nodes to a Firmware Group Policy. | <pre>map(object({<br>    annotation        = optional(string)<br>    description       = optional(string)<br>    firmware_group_dn = optional(string)<br>    name_alias        = optional(string)<br>    node_id_from      = optional(number)<br>    node_id_to        = optional(number)<br>  }))</pre> | <pre>{<br>  "default": {<br>    "annotation": "",<br>    "description": "",<br>    "firmware_group_dn": "",<br>    "name_alias": "",<br>    "node_id_from": 201,<br>    "node_id_to": 201<br>  }<br>}</pre> | no |
 
 ## Outputs
 

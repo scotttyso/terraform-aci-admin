@@ -10,7 +10,7 @@ GUI Location:
  - Admin > Firmware > Nodes > {Firmware Group Name}
 */
 resource "aci_node_block_firmware" "example" {
-  for_each          = local.node_firmware_block
+  for_each          = local.firmware_node_block
   annotation        = each.value["annotation"]
   firmware_group_dn = each.value["firmware_group_dn"]
   from_             = each.value["node_id_from"]

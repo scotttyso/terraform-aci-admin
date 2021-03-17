@@ -7,7 +7,7 @@ module "maintenance_policy_default" {
 
   description = "Default Maintenance Policy"
   name        = "Default"
-  sw_version  = "simsw-4.2(5k)"
+  sw_version  = "simsw-5.1(3e)"
 }
 
 output "maintenance_policy_default" {
