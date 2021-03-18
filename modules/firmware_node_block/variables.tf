@@ -2,7 +2,7 @@ terraform {
   experiments = [module_variable_optional_attrs]
 }
 
-variable "node_firmware_block" {
+variable "firmware_node_block" {
   description = "Add Nodes to a Firmware Group Policy."
   type = map(object({
     annotation        = optional(string)
@@ -25,8 +25,8 @@ variable "node_firmware_block" {
 }
 
 locals {
-  node_firmware_block = {
-    for k, v in var.node_firmware_block : k => {
+  firmware_node_block = {
+    for k, v in var.firmware_node_block : k => {
       annotation        = (v.annotation != null ? v.annotation : "")
       description       = (v.description != null ? v.description : "")
       firmware_group_dn = (v.firmware_group_dn != null ? v.firmware_group_dn : "")

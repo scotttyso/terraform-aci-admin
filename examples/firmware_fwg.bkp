@@ -1,0 +1,91 @@
+#----------------------------------------------------------------------------------------
+# I am not sure which versions of APIC use Firmware Groups instead of Maintenance Groups
+# For 4.X and 5.x Use Maintenance Groups for Node Firmware Policies.
+#----------------------------------------------------------------------------------------
+
+module "firmware_policy_default" {
+  source = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/firmware_policy"
+  #
+  # This module will create a Firmware Policy under Admin > Firmware.
+  #
+  # Any Variable Not Defined below will use the default values
+
+  description = "Default Firmware Policy"
+  name        = "Default"
+  sw_version  = "simsw-5.1(3e)"
+}
+
+output "firmware_policy_default" {
+  value = module.firmware_policy_default
+}
+
+module "firmware_group_switch_FwgA" {
+  depends_on = [module.firmware_policy_default]
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/firmware_group"
+  #
+  # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
+  #
+  # Any Variable Not Defined below will use the default values
+
+  firmware_policy_dn = module.firmware_policy_default.firmware_policy
+  name                  = "switch_FwgA"
+}
+
+output "firmware_group_switch_FwgA" {
+  value = module.firmware_group_switch_FwgA
+}
+
+module "firmware_group_switch_FwgB" {
+  depends_on = [module.firmware_policy_default]
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/firmware_group"
+  #
+  # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
+  #
+  # Any Variable Not Defined below will use the default values
+
+  firmware_policy_dn = module.firmware_policy_default.firmware_policy
+  name                  = "switch_FwgB"
+}
+
+output "firmware_group_switch_FwgB" {
+  value = module.firmware_group_switch_FwgB
+}
+
+module "firmware_group_switch_FwgA_NodeBlk" {
+  depends_on = [module.firmware_group_switch_FwgB]
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/firmware_node_block"
+  #
+  # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
+  #
+  # Any Variable Not Defined below will use the default values
+
+  firmware_node_block = {
+    "node_101" = {
+      description          = "Node 101"
+      firmware_group_dn = module.firmware_group_switch_FwgA.firmware_group
+      node_id_from         = 101
+    }
+    "node_201" = {
+      description          = "Node 201"
+      firmware_group_dn = module.firmware_group_switch_FwgA.firmware_group
+      node_id_from         = 201
+    }
+  }
+}
+
+module "firmware_group_switch_FwgB_NodeBlk" {
+  depends_on = [module.firmware_group_switch_FwgB]
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/firmware_node_block"
+  #
+  # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
+  #
+  # Any Variable Not Defined below will use the default values
+
+  firmware_node_block = {
+    "node_101" = {
+      description          = "Node 202"
+      firmware_group_dn = module.firmware_group_switch_FwgB.firmware_group
+      node_id_from         = 202
+    }
+  }
+}
