@@ -46,7 +46,7 @@ output "host1" {
 }
 
 # module "host2" {
-#   source  = "../modules/remote_host"
+#   source  = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/remote_host"
 #   #
 #   # This module will configure a Remote Host to perform the Configuration Export.
 #   #

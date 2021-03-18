@@ -1,5 +1,5 @@
 module "login_domain_radius" {
-  source = "../modules/login_domain_radius"
+  source = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/login_domain_radius"
   #
   # This module will configure a Login Domain for RADIUS.
   #
@@ -15,7 +15,7 @@ output "login_domain_radius" {
 
 module "radius_server1" {
   depends_on = [module.login_domain_radius]
-  source     = "../modules/radius_provider"
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/radius_provider"
   #
   # This module will configure a RADIUS Provider.
   #
@@ -32,7 +32,7 @@ module "radius_server1" {
 
 module "radius_server2" {
   depends_on = [module.login_domain_radius]
-  source     = "../modules/radius_provider"
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/radius_provider"
   #
   # This module will configure a RADIUS Provider.
   #

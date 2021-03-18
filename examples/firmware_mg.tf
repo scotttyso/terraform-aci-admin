@@ -1,5 +1,5 @@
 module "maintenance_policy_default" {
-  source = "../modules/maintenance_policy"
+  source = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/maintenance_policy"
   #
   # This module will create a Firmware Policy under Admin > Firmware.
   #
@@ -16,7 +16,7 @@ output "maintenance_policy_default" {
 
 module "maintenance_group_switch_MgA" {
   depends_on = [module.maintenance_policy_default]
-  source     = "../modules/maintenance_group"
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/maintenance_group"
   #
   # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
   #
@@ -32,7 +32,7 @@ output "maintenance_group_switch_MgA" {
 
 module "maintenance_group_switch_MgB" {
   depends_on = [module.maintenance_policy_default]
-  source     = "../modules/maintenance_group"
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/maintenance_group"
   #
   # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
   #
@@ -48,7 +48,7 @@ output "maintenance_group_switch_MgB" {
 
 module "maintenance_group_switch_MgA_NodeBlk" {
   depends_on = [module.maintenance_group_switch_MgB]
-  source     = "../modules/maintenance_node_block"
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/maintenance_node_block"
   #
   # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
   #
@@ -70,7 +70,7 @@ module "maintenance_group_switch_MgA_NodeBlk" {
 
 module "maintenance_group_switch_MgB_NodeBlk" {
   depends_on = [module.maintenance_group_switch_MgB]
-  source     = "../modules/maintenance_node_block"
+  source     = "app.terraform.io/Cisco-IST-TigerTeam/admin/aci//modules/maintenance_node_block"
   #
   # This module will configure a Firmware Group under Admin > Firmware > Node Firmware.
   #
