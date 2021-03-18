@@ -16,7 +16,7 @@ module "Every24Hours" {
   #
   # This module will configure a Triggered Schedule and Window to perform the Configuration Export.
   #
-  # Any Variable Not Defined below will use the default values
+  # Any Variable Not Defined below will use the default values.
 
   description    = "Schedule for 12:15 AM every day"
   minute         = 15
