@@ -5,7 +5,7 @@
 ```hcl
 module "authentication_console" {
 
-  source = "terraform-aci-access//modules/authentication_console"
+  source = "terraform-aci-admin//modules/authentication_console"
 
   # omitted...
 }

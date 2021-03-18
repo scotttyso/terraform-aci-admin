@@ -5,7 +5,7 @@
 ```hcl
 module "tacacs_source" {
 
-  source = "terraform-aci-access//modules/tacacs_source"
+  source = "terraform-aci-admin//modules/tacacs_source"
 
   # omitted...
 }

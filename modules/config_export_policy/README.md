@@ -5,7 +5,7 @@
 ```hcl
 module "config_export_policy" {
 
-  source = "terraform-aci-access//modules/config_export_policy"
+  source = "terraform-aci-admin//modules/config_export_policy"
 
   # omitted...
 }

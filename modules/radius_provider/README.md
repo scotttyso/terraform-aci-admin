@@ -5,7 +5,7 @@
 ```hcl
 module "radius_provider" {
 
-  source = "terraform-aci-access//modules/radius_provider"
+  source = "terraform-aci-admin//modules/radius_provider"
 
   # omitted...
 }

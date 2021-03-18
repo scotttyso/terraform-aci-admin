@@ -5,7 +5,7 @@
 ```hcl
 module "scheduler" {
 
-  source = "terraform-aci-access//modules/scheduler"
+  source = "terraform-aci-admin//modules/scheduler"
 
   # omitted...
 }

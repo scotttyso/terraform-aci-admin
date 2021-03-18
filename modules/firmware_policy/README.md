@@ -5,7 +5,7 @@
 ```hcl
 module "firmware_policy" {
 
-  source = "terraform-aci-access//modules/firmware_policy"
+  source = "terraform-aci-admin//modules/firmware_policy"
 
   # omitted...
 }

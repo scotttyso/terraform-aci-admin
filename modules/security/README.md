@@ -5,7 +5,7 @@
 ```hcl
 module "security" {
 
-  source = "terraform-aci-access//modules/security"
+  source = "terraform-aci-admin//modules/security"
 
   # omitted...
 }

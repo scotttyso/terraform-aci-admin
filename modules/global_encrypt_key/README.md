@@ -5,7 +5,7 @@
 ```hcl
 module "global_encrypt_key" {
 
-  source = "terraform-aci-access//modules/global_encrypt_key"
+  source = "terraform-aci-admin//modules/global_encrypt_key"
 
   # omitted...
 }

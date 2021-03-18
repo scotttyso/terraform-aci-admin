@@ -5,7 +5,7 @@
 ```hcl
 module "firmware_node_block" {
 
-  source = "terraform-aci-access//modules/firmware_node_block"
+  source = "terraform-aci-admin//modules/firmware_node_block"
 
   # omitted...
 }

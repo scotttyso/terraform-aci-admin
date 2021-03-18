@@ -5,7 +5,7 @@
 ```hcl
 module "remote_host" {
 
-  source = "terraform-aci-access//modules/remote_host"
+  source = "terraform-aci-admin//modules/remote_host"
 
   # omitted...
 }

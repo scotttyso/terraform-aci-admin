@@ -5,7 +5,7 @@
 ```hcl
 module "maintenance_group" {
 
-  source = "terraform-aci-access//modules/maintenance_group"
+  source = "terraform-aci-admin//modules/maintenance_group"
 
   # omitted...
 }

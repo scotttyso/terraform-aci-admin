@@ -5,7 +5,7 @@
 ```hcl
 module "maintenance_node_block" {
 
-  source = "terraform-aci-access//modules/maintenance_node_block"
+  source = "terraform-aci-admin//modules/maintenance_node_block"
 
   # omitted...
 }
